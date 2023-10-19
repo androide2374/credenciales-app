@@ -5,12 +5,13 @@ import RQProvider from './components/RQProvider'
 export const metadata: Metadata = {
   title: 'Home',
   description: 'Welcome to Next.js'
+
 }
 
 export default function RootLayout ({ children }: { children: JSX.Element | JSX.Element[] }) {
   return (
     <html lang='es'>
-      <body className='dark:bg-slate-800 dark: text-white'>
+      <body className='dark:bg-slate-800 dark: text-white grid '>
         <RQProvider>
           {children}
         </RQProvider>

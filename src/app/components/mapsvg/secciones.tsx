@@ -3,10 +3,10 @@ import { useSeccionesStore } from '@/store/secciones-store'
 import { Button, Spinner } from 'flowbite-react'
 import { SvgSecciones } from './v2/SeccionesItems2'
 
-export default function Secciones () {
+export default function Secciones ({ escrutinio }: { escrutinio: string }) {
   const setSeccion = useSeccionesStore((store) => store.selectedSeccion)
   const current = useSeccionesStore((store) => store.currentSeccion)
-  const { data: resultMapa, isLoading, isError, refetch } = useResultadoMapa()
+  const { data: resultMapa, isLoading, isError, refetch } = useResultadoMapa(escrutinio)
   const svgs = resultMapa?.map(value => {
     return SvgSecciones[value.CIRCUITO_CODE](value.COLOR, () => { setSeccion(value.CIRCUITO_CODE) }, current === value.CIRCUITO_CODE, `${value.CIRCUITO_CODE}-${Math.random()}`)
   })

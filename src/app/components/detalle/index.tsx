@@ -7,11 +7,11 @@ import { Card, Spinner } from 'flowbite-react'
 import Item from '../candidatos/item'
 import Error from '../errorBox'
 
-export default function Detalle () {
+export default function Detalle ({ escrutinio }: { escrutinio: string }) {
   const currentSeccion = useStore(useSeccionesStore, (store) => store.currentSeccion)
   const reset = useSeccionesStore((store) => store.reset)
 
-  const { data: resultadoDetalle, isError, isLoading, refetch } = useResultadoDetalle()
+  const { data: resultadoDetalle, isError, isLoading, refetch } = useResultadoDetalle(escrutinio)
 
   return (
     <Card className='w-full'>
