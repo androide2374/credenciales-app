@@ -1,22 +1,41 @@
 'use client'
 
+import { SeccionesData } from '@/constance/secciones'
 import useResultadoDetalle from '@/hooks/useResultadoDetalle'
 import useStore from '@/hooks/useStore'
 import { useSeccionesStore } from '@/store/secciones-store'
+import { type SeccionesDataInterface } from '@/types'
 import { Card, Spinner } from 'flowbite-react'
+import { useState } from 'react'
 import Item from '../candidatos/item'
 import Error from '../errorBox'
 
 export default function Detalle ({ escrutinio }: { escrutinio: string }) {
+  const [refreshInterval, setRefreshInterval] = useState(1000 * 60 * 3)
   const currentSeccion = useStore(useSeccionesStore, (store) => store.currentSeccion)
   const reset = useSeccionesStore((store) => store.reset)
 
-  const { data: resultadoDetalle, isError, isLoading, refetch } = useResultadoDetalle(escrutinio)
+  const seccion = currentSeccion ? SeccionesData[currentSeccion as keyof SeccionesDataInterface] : currentSeccion
 
+  const { data: resultadoDetalle, isError, isLoading, refetch } = useResultadoDetalle(escrutinio, refreshInterval)
   return (
     <Card className='w-full'>
+      <div className='flex gap-10 items-end w-full'>
+        <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiempo de actualización</label>
+        <select
+        onChange={(e) => { setRefreshInterval(Number(e.target.value)) }}
+        value={refreshInterval}
+        id="countries"
+        className="bg-gray-50 border border-gray-300 w-3/12 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value={1000}>1 seg</option>
+          <option value={1000 * 15}>15 seg</option>
+          <option value={1000 * 30}>30 seg</option>
+          <option value={1000 * 60}>1 min</option>
+          <option value={1000 * 60 * 3}>3 min</option>
+        </select>
+      </div>
       <main className='h-full'>
-        <h1 className='font-bold text-xl'>{`Resultados ${currentSeccion}`}</h1>
+        <h1 className='font-bold text-xl'>{`Resultados ${seccion ?? currentSeccion}`}</h1>
         {currentSeccion !== 'General' && (
           <button onClick={() => {
             reset()

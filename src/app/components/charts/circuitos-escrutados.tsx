@@ -44,10 +44,8 @@ export const options = {
   }
 }
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
-
 export const dataValues = {
-  labels,
+  labels: [''],
   datasets: [
     {
       label: 'Dataset 1',
