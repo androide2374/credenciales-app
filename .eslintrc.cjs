@@ -27,7 +27,8 @@ module.exports = {
     '@typescript-eslint/consistent-type-assertions': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
     'react/jsx-indent': ['error', 2],
-    indent: ['error', 2],
+    '@next/next/no-img-element': 'off',
+    // indent: ['error', 2],
     'import/no-anonymous-default-export': 'off',
     'react-hooks/exhaustive-deps': 'off'
   }

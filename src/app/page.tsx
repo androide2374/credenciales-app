@@ -2,15 +2,15 @@ import { type Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: '📝 Resultados Lomas de Zamora',
-  description: 'Mapa interactivo paso 2023'
+  title: '📝 Escrutinio Lomas de Zamora',
+  description: 'Escrutinio Lomas de Zamora'
 }
 
 export default function Home () {
   return (
-    <main className='w-full flex justify-center items-center'>
+    <main className='w-full flex justify-center items-center mt-20'>
       <section className='flex flex-col text-center gap-8'>
-        <h1>Resultados</h1>
+        {/* <h1>Resultados</h1> */}
         <div className='flex md:flex-row flex-col gap-8'>
           <article
             className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow w-80 dark:bg-gray-800 dark:border-gray-700">

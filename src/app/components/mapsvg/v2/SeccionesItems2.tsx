@@ -3,6 +3,33 @@ import React, { type ReactElement } from 'react'
 
 export type SeccionesType = keyof typeof SeccionesData
 
+export function changeColor (color: string) {
+  // Convirtiendo String Hexadecimal a RGB
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color)
+  const rgb = result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      }
+    : null
+  // Formula que determinara el color blanco o negro de las letras
+  const colorText = contrast(rgb)
+
+  return colorText
+}
+
+function contrast (rgb: any) {
+  const C = [rgb.r / 255, rgb.g / 255, rgb.b / 255]
+
+  for (let i = 0; i < C.length; ++i) {
+    if (C[i] <= 0.03928) { C[i] = C[i] / 12.92 } else { C[i] = Math.pow((C[i] + 0.055) / 1.055, 2.4) }
+  }
+  const L = 0.2126 * C[0] + 0.7152 * C[1] + 0.0722 * C[2]
+
+  if (L > 0.179) { return 'black' } else { return 'white' }
+}
+
 type SvgSeccionesType = {
   [key in SeccionesType]: (
     color: string,
@@ -28,7 +55,7 @@ const SvgSecciones: SvgSeccionesType = {
           whiteSpace: 'pre'
         }}
         transform="translate(-7.542 4.77)"
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.3px"
         fontWeight={700}
@@ -60,7 +87,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={100.02}
         y={200.403}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -87,7 +114,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={128.907}
         y={160.327}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -114,7 +141,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={170.411}
         y={129.236}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -141,7 +168,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={209.974}
         y={192.731}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -168,7 +195,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={268.499}
         y={230.829}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -195,7 +222,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={321.767}
         y={238.336}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -222,7 +249,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={269.415}
         y={266.742}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -249,7 +276,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={320.253}
         y={275.596}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -276,7 +303,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={196.292}
         y={282.264}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -303,7 +330,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={154.162}
         y={335.457}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -330,7 +357,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={226.059}
         y={421.431}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -357,7 +384,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={271.49}
         y={381.98}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -384,7 +411,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={274.127}
         y={345.734}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -411,7 +438,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={335.958}
         y={326.681}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -438,7 +465,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={410.58}
         y={276.175}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -465,7 +492,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={368.332}
         y={250.521}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}
@@ -492,7 +519,7 @@ const SvgSecciones: SvgSeccionesType = {
         }}
         x={156.75}
         y={206.46}
-        fill="#333"
+        fill={changeColor(color)}
         fontFamily="Arial,sans-serif"
         fontSize="11.1px"
         fontWeight={700}

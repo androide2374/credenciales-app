@@ -5,7 +5,6 @@ import ServiceBase from './ServiceBase'
 const BASE_URL = process.env.API_RESULTADOS
 class ResultadoService extends ServiceBase {
   constructor () {
-    console.log(process.env)
     super({ baseUrl: BASE_URL })
   }
 

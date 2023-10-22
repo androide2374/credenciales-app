@@ -15,7 +15,7 @@ export default function Secciones ({ escrutinio }: { escrutinio: string }) {
   }
 
   return (
-    <div className='w-full max-w-screen-lg flex items-center justify-center h-[820px]'>
+    <div className='w-full max-w-screen-lg flex items-start justify-center md:min-h-[720px] min-h-[420px]'>
       {isLoading
         ? <Spinner aria-label="Default status example" />
         : <svg viewBox={'10 60 500 400'} >{svgs}</svg>
