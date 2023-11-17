@@ -21,6 +21,7 @@ export default function NavbarWithDropdown () {
         </Navbar.Link>
         <Navbar.Link as={Link} href="/paso/2023" active={pathName.includes('/paso/2023')}>Paso 2023</Navbar.Link>
         <Navbar.Link as={Link} href="/generales/2023" active={pathName.includes('/generales/2023')}>Generales 2023</Navbar.Link>
+        <Navbar.Link as={Link} href="/balotage/2023" active={pathName.includes('/balotage/2023')}>Balotage 2023</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   )

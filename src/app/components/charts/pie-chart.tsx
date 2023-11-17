@@ -6,7 +6,6 @@ import ChartDataLabels from 'chartjs-plugin-datalabels'
 import { Spinner } from 'flowbite-react'
 import { useState } from 'react'
 import { Pie } from 'react-chartjs-2'
-import CargoSelect2 from '../cargo-select-2'
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
 const options = {
@@ -62,7 +61,7 @@ export const data = {
 }
 
 export function PorcentajeCargoChart ({ escrutinio }: { escrutinio: string }) {
-  const [cargo, setCargo] = useState('7446c69a-81f1-42d3-a403-e2a992e97aa4')
+  const cargo = '64C6472A-4900-4F2E-ACEC-027B5ABE4712'
   const [refreshInterval, setRefreshInterval] = useState(1000 * 60 * 3)
 
   const { data: dataTest, isLoading } = useQuery({
@@ -92,7 +91,7 @@ export function PorcentajeCargoChart ({ escrutinio }: { escrutinio: string }) {
   return (
     <div className=" p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <section className='grid grid-cols-3 gap-4'>
-        <CargoSelect2 cargo={cargo} setCargo={setCargo} />
+
         <div className='col-span-1'>
           <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">Tiempo de actualización</label>
           <select
